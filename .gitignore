@@ -1,0 +1,14 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# large scan files: download them (see README)
+data/
+
+# generated images and timings
+results/*
+!results/bench_*.csv
+
+# local notes
+Claude outputs/
