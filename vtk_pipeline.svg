@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1430" viewBox="0 0 1600 1430" font-family="Helvetica, Arial, sans-serif">
+<defs><marker id="a" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#666666"/></marker></defs>
+<rect width="1600" height="1430" fill="#ffffff"/>
+<text x="60" y="56" font-size="28" font-weight="700" fill="#191919" text-anchor="start">VTK comparison pipeline (vtk_compare.py)</text>
+<text x="60" y="84" font-size="15" font-weight="400" fill="#666666" text-anchor="start">Same data, transfer function, camera and step size as the CUDA renderer; VTK&#x27;s own shader does the ray casting.</text>
+<rect x="1000" y="42" width="18" height="18" rx="3" fill="#f3f3f3" stroke="#8a8a8a" stroke-width="2"/>
+<text x="1026" y="56" font-size="14" font-weight="400" fill="#666666" text-anchor="start">Our code, shared with CUDA</text>
+<rect x="1250" y="42" width="18" height="18" rx="3" fill="#e6f0fc" stroke="#257de0" stroke-width="2"/>
+<text x="1276" y="56" font-size="14" font-weight="400" fill="#666666" text-anchor="start">VTK</text>
+<rect x="1330" y="42" width="18" height="18" rx="3" fill="#fdeee6" stroke="#f47230" stroke-width="2"/>
+<text x="1356" y="56" font-size="14" font-weight="400" fill="#666666" text-anchor="start">Only in our implementation</text>
+<rect x="60" y="120" width="440" height="100" rx="8" fill="#f3f3f3" stroke="#8a8a8a" stroke-width="2"/>
+<text x="74" y="146" font-size="16" font-weight="700" fill="#191919" text-anchor="start">volume.py: load_volume()</text>
+<text x="74" y="170" font-size="14" font-weight="400" fill="#666666" text-anchor="start">uint16 array (nz, ny, nx) + voxel spacing</text>
+<text x="74" y="191" font-size="14" font-weight="400" fill="#666666" text-anchor="start">density = (value - min) / (max - min)</text>
+<rect x="580" y="120" width="440" height="100" rx="8" fill="#f3f3f3" stroke="#8a8a8a" stroke-width="2"/>
+<text x="594" y="146" font-size="16" font-weight="700" fill="#191919" text-anchor="start">tf.py: preset_lut()</text>
+<text x="594" y="170" font-size="14" font-weight="400" fill="#666666" text-anchor="start">256-entry RGBA table</text>
+<text x="594" y="191" font-size="14" font-weight="400" fill="#666666" text-anchor="start">same &#x27;full&#x27; / &#x27;dense&#x27; presets as the CUDA runs</text>
+<rect x="1100" y="120" width="440" height="100" rx="8" fill="#f3f3f3" stroke="#8a8a8a" stroke-width="2"/>
+<text x="1114" y="146" font-size="16" font-weight="700" fill="#191919" text-anchor="start">camera.py: orbit_camera()</text>
+<text x="1114" y="170" font-size="14" font-weight="400" fill="#666666" text-anchor="start">eye, up vector, 40 degree vertical FOV</text>
+<text x="1114" y="191" font-size="14" font-weight="400" fill="#666666" text-anchor="start">8 azimuths, elevation 20, distance 2</text>
+<rect x="60" y="270" width="440" height="110" rx="8" fill="#e6f0fc" stroke="#257de0" stroke-width="2"/>
+<text x="74" y="296" font-size="16" font-weight="700" fill="#191919" text-anchor="start">vtkImageData</text>
+<text x="74" y="320" font-size="14" font-weight="400" fill="#666666" text-anchor="start">dims nx x ny x nz, spacing = voxel size</text>
+<text x="74" y="341" font-size="14" font-weight="400" fill="#666666" text-anchor="start">points at voxel centres, scalars from NumPy</text>
+<rect x="580" y="270" width="440" height="110" rx="8" fill="#e6f0fc" stroke="#257de0" stroke-width="2"/>
+<text x="594" y="296" font-size="16" font-weight="700" fill="#191919" text-anchor="start">vtkVolumeProperty + transfer functions</text>
+<text x="594" y="320" font-size="14" font-weight="400" fill="#666666" text-anchor="start">vtkColorTransferFunction, vtkPiecewiseFunction</text>
+<text x="594" y="341" font-size="14" font-weight="400" fill="#666666" text-anchor="start">linear interpolation, shading off, opacity unit = 1 voxel</text>
+<rect x="1100" y="270" width="440" height="110" rx="8" fill="#e6f0fc" stroke="#257de0" stroke-width="2"/>
+<text x="1114" y="296" font-size="16" font-weight="700" fill="#191919" text-anchor="start">vtkRenderer + vtkCamera</text>
+<text x="1114" y="320" font-size="14" font-weight="400" fill="#666666" text-anchor="start">black background, perspective camera</text>
+<text x="1114" y="341" font-size="14" font-weight="400" fill="#666666" text-anchor="start">position / view-up / view angle from orbit_camera</text>
+<line x1="280" y1="220" x2="280" y2="268" stroke="#666666" stroke-width="2" marker-end="url(#a)"/>
+<line x1="280" y1="380" x2="280" y2="428" stroke="#666666" stroke-width="2" marker-end="url(#a)"/>
+<line x1="800" y1="220" x2="800" y2="268" stroke="#666666" stroke-width="2" marker-end="url(#a)"/>
+<line x1="800" y1="380" x2="800" y2="428" stroke="#666666" stroke-width="2" marker-end="url(#a)"/>
+<line x1="1320" y1="220" x2="1320" y2="268" stroke="#666666" stroke-width="2" marker-end="url(#a)"/>
+<line x1="1320" y1="380" x2="1320" y2="428" stroke="#666666" stroke-width="2" marker-end="url(#a)"/>
+<rect x="60" y="430" width="1480" height="104" rx="8" fill="#e6f0fc" stroke="#257de0" stroke-width="2"/>
+<text x="74" y="456" font-size="16" font-weight="700" fill="#191919" text-anchor="start">vtkGPUVolumeRayCastMapper   (input: the vtkImageData, drawn as a vtkVolume with the property above)</text>
+<text x="74" y="480" font-size="14" font-weight="400" fill="#666666" text-anchor="start">Blend mode: composite  |  SampleDistance = 0.5 voxel (same step as the CUDA versions)</text>
+<text x="74" y="501" font-size="14" font-weight="400" fill="#666666" text-anchor="start">AutoAdjustSampleDistances OFF  |  LockSampleDistanceToInputSpacing OFF  |  Jittering OFF  |  depth pass not enabled</text>
+<line x1="800" y1="550" x2="800" y2="598" stroke="#666666" stroke-width="2" marker-end="url(#a)"/>
+<rect x="60" y="600" width="1480" height="290" rx="10" fill="#ffffff" stroke="#257de0" stroke-width="2" stroke-dasharray="8 5"/>
+<text x="80" y="630" font-size="16" font-weight="700" fill="#191919" text-anchor="start">Rendering one pixel on the GPU (VTK fragment shader). Our CUDA kernel runs the same loop.</text>
+<rect x="100" y="655" width="240" height="110" rx="8" fill="#e6f0fc" stroke="#257de0" stroke-width="2"/>
+<text x="114" y="681" font-size="16" font-weight="700" fill="#191919" text-anchor="start">1  Ray setup</text>
+<text x="114" y="705" font-size="14" font-weight="400" fill="#666666" text-anchor="start">start / end at the volume bounds</text>
+<text x="114" y="726" font-size="14" font-weight="400" fill="#666666" text-anchor="start">(and the depth buffer)</text>
+<rect x="390" y="655" width="240" height="110" rx="8" fill="#e6f0fc" stroke="#257de0" stroke-width="2"/>
+<text x="404" y="681" font-size="16" font-weight="700" fill="#191919" text-anchor="start">2  Sample</text>
+<text x="404" y="705" font-size="14" font-weight="400" fill="#666666" text-anchor="start">3D texture lookup, hardware</text>
+<text x="404" y="726" font-size="14" font-weight="400" fill="#666666" text-anchor="start">trilinear interpolation</text>
+<rect x="680" y="655" width="240" height="110" rx="8" fill="#e6f0fc" stroke="#257de0" stroke-width="2"/>
+<text x="694" y="681" font-size="16" font-weight="700" fill="#191919" text-anchor="start">3  Transfer function</text>
+<text x="694" y="705" font-size="14" font-weight="400" fill="#666666" text-anchor="start">colour + opacity lookup,</text>
+<text x="694" y="726" font-size="14" font-weight="400" fill="#666666" text-anchor="start">opacity scaled to the step</text>
+<rect x="970" y="655" width="240" height="110" rx="8" fill="#e6f0fc" stroke="#257de0" stroke-width="2"/>
+<text x="984" y="681" font-size="16" font-weight="700" fill="#191919" text-anchor="start">4  Composite</text>
+<text x="984" y="705" font-size="14" font-weight="400" fill="#666666" text-anchor="start">front-to-back blending</text>
+<text x="984" y="726" font-size="14" font-weight="400" fill="#666666" text-anchor="start">of colour and alpha</text>
+<rect x="1260" y="655" width="240" height="110" rx="8" fill="#e6f0fc" stroke="#257de0" stroke-width="2"/>
+<text x="1274" y="681" font-size="16" font-weight="700" fill="#191919" text-anchor="start">5  Early ray termination</text>
+<text x="1274" y="705" font-size="14" font-weight="400" fill="#666666" text-anchor="start">stop if alpha &gt; 1 - 1/255</text>
+<text x="1274" y="726" font-size="14" font-weight="400" fill="#666666" text-anchor="start">(about 0.996), else next step</text>
+<line x1="340" y1="710" x2="388" y2="710" stroke="#666666" stroke-width="2" marker-end="url(#a)"/>
+<line x1="630" y1="710" x2="678" y2="710" stroke="#666666" stroke-width="2" marker-end="url(#a)"/>
+<line x1="920" y1="710" x2="968" y2="710" stroke="#666666" stroke-width="2" marker-end="url(#a)"/>
+<line x1="1210" y1="710" x2="1258" y2="710" stroke="#666666" stroke-width="2" marker-end="url(#a)"/>
+<polyline points="1380,765 1380,795 510,795 510,767" fill="none" stroke="#666666" stroke-width="2" marker-end="url(#a)"/>
+<text x="945" y="788" font-size="13" font-weight="400" fill="#666666" text-anchor="middle">next step</text>
+<rect x="100" y="812" width="700" height="62" rx="8" fill="#fdeee6" stroke="#f47230" stroke-width="2"/>
+<text x="114" y="838" font-size="15" font-weight="700" fill="#191919" text-anchor="start">Only in ours: empty-space skipping (ESS)</text>
+<text x="114" y="862" font-size="14" font-weight="400" fill="#666666" text-anchor="start">probe 1 sample every 8 steps and jump over empty space (lossy)</text>
+<rect x="830" y="812" width="420" height="62" rx="8" fill="#fdeee6" stroke="#f47230" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="844" y="838" font-size="15" font-weight="700" fill="#191919" text-anchor="start">Only in ours: virtual bricking</text>
+<text x="844" y="862" font-size="14" font-weight="400" fill="#666666" text-anchor="start">planned, not implemented yet</text>
+<line x1="800" y1="890" x2="800" y2="928" stroke="#666666" stroke-width="2" marker-end="url(#a)"/>
+<rect x="60" y="930" width="1480" height="112" rx="8" fill="#e6f0fc" stroke="#257de0" stroke-width="2"/>
+<text x="74" y="956" font-size="16" font-weight="700" fill="#191919" text-anchor="start">vtkRenderWindow (offscreen, no multisampling, 512 x 512 or 1024 x 1024) and outputs</text>
+<text x="74" y="980" font-size="14" font-weight="400" fill="#666666" text-anchor="start">Timing: Render() + 1-pixel read-back, minus an empty-scene baseline (net_ms). The CUDA versions time the kernel only.</text>
+<text x="74" y="1001" font-size="14" font-weight="400" fill="#666666" text-anchor="start">Image: vtkWindowToImageFilter -&gt; float32 RGB -&gt; results/images/vtk_*.npy  |  Times: results/bench_vtk.csv (same columns as bench.py).</text>
+<text x="60" y="1092" font-size="20" font-weight="700" fill="#191919" text-anchor="start">Which optimizations are where</text>
+<rect x="60" y="1108" width="1480" height="34" fill="#f3f3f3" stroke="#d0d0d0"/>
+<text x="74" y="1131" font-size="15" font-weight="700" fill="#191919" text-anchor="start">Technique</text>
+<text x="324" y="1131" font-size="15" font-weight="700" fill="#191919" text-anchor="start">VTK (as we configured it)</text>
+<text x="944" y="1131" font-size="15" font-weight="700" fill="#191919" text-anchor="start">Our CUDA implementation</text>
+<rect x="60" y="1142" width="250" height="60" fill="#ffffff" stroke="#d0d0d0"/>
+<text x="74" y="1177" font-size="15" font-weight="700" fill="#191919" text-anchor="start">Early ray termination</text>
+<rect x="310" y="1142" width="620" height="60" fill="#e6f0fc" stroke="#d0d0d0"/>
+<text x="324" y="1177" font-size="14" font-weight="400" fill="#191919" text-anchor="start">Yes. Stops when alpha &gt; 1 - 1/255 (about 0.996).</text>
+<rect x="930" y="1142" width="610" height="60" fill="#fdeee6" stroke="#d0d0d0"/>
+<text x="944" y="1177" font-size="14" font-weight="400" fill="#191919" text-anchor="start">Yes (ERT flag). Stops when alpha &gt;= 0.99.</text>
+<rect x="60" y="1202" width="250" height="60" fill="#ffffff" stroke="#d0d0d0"/>
+<text x="74" y="1237" font-size="15" font-weight="700" fill="#191919" text-anchor="start">Empty-space skipping</text>
+<rect x="310" y="1202" width="620" height="60" fill="#ffffff" stroke="#d0d0d0"/>
+<text x="324" y="1228" font-size="14" font-weight="400" fill="#191919" text-anchor="start">No min-max or octree skipping found in the shader source</text>
+<text x="324" y="1249" font-size="14" font-weight="400" fill="#191919" text-anchor="start">we read. An optional depth pass exists; not enabled here.</text>
+<rect x="930" y="1202" width="610" height="60" fill="#fdeee6" stroke="#d0d0d0"/>
+<text x="944" y="1228" font-size="14" font-weight="400" fill="#191919" text-anchor="start">Yes (ESS flag): one probe every 8 steps, skips empty space.</text>
+<text x="944" y="1249" font-size="14" font-weight="400" fill="#191919" text-anchor="start">Lossy: features thinner than the skip can be missed.</text>
+<rect x="60" y="1262" width="250" height="60" fill="#ffffff" stroke="#d0d0d0"/>
+<text x="74" y="1297" font-size="15" font-weight="700" fill="#191919" text-anchor="start">Adaptive sampling</text>
+<rect x="310" y="1262" width="620" height="60" fill="#e6f0fc" stroke="#d0d0d0"/>
+<text x="324" y="1288" font-size="14" font-weight="400" fill="#191919" text-anchor="start">Can raise the step / lower image resolution to hit a frame</text>
+<text x="324" y="1309" font-size="14" font-weight="400" fill="#191919" text-anchor="start">rate (AutoAdjustSampleDistances). Turned OFF here.</text>
+<rect x="930" y="1262" width="610" height="60" fill="#ffffff" stroke="#d0d0d0"/>
+<text x="944" y="1297" font-size="14" font-weight="400" fill="#191919" text-anchor="start">None: fixed 0.5-voxel step at full resolution.</text>
+<rect x="60" y="1322" width="250" height="60" fill="#ffffff" stroke="#d0d0d0"/>
+<text x="74" y="1357" font-size="15" font-weight="700" fill="#191919" text-anchor="start">Bricking</text>
+<rect x="310" y="1322" width="620" height="60" fill="#ffffff" stroke="#d0d0d0"/>
+<text x="324" y="1357" font-size="14" font-weight="400" fill="#191919" text-anchor="start">Not used in our pipeline.</text>
+<rect x="930" y="1322" width="610" height="60" fill="#fdeee6" stroke="#d0d0d0"/>
+<text x="944" y="1357" font-size="14" font-weight="400" fill="#191919" text-anchor="start">Virtual bricking: planned, not implemented yet.</text>
+<text x="60" y="1410" font-size="12" font-weight="400" fill="#666666" text-anchor="start">Sources: VTK documentation for vtkGPUVolumeRayCastMapper; vtkVolumeShaderComposer.h (g_opacityThreshold = 1.0 - 1.0/255.0); our vtk_compare.py and kernel.py.</text>
+</svg>
